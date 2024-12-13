@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Sign in</title>
+<style>
+body {
+  font-family: Arial;
+  color: rgb(0, 0, 0);
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .left-side {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo {
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 250px;
+    height: 250px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left; /* Align text inputs to the left */
+  }
+  .form-group input {
+    width: 500px;
+    padding: 10px 10px;
+    font-size: 16px;
+    border: 1px solid #35BF3A;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    
+  }
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+    text-align: left;
+  }
+  .button {
+    padding: 10px 120px;
+    background-color: #35BF3A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+  }
+  .button:hover {
+    background-color: #000000;
+  }
+  .right-side {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .right-side img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: #FAFBEA;
+}
+
+.right {
+  right: 0;
+  background-image: url('pics/Copy\ of\ bg.png');
+  background-size: cover; /* Ensures the background covers the entire element */
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  display: flex;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.sign-in {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 150px;
+  color: #000000;
+}
+.forget-password {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #000000;
+  font-size: 15px;
+}
+.belowloginform {
+  margin-top: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.belowloginform div {
+  margin-bottom: 10px;
+}
+
+.signinuser{
+  font-size: 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="split left">
+  <div class="centered">
+    <img src="pics/Copy of logo (black text).png" alt="logo" class="logo" width="500" height="500">
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <div class="forget-password">
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="button">Eat Away!</button>
+    </form>
+
+    <div class="belowloginform">
+      <div style="margin-top: 40px; margin-bottom: 40px; font-size: 15px;">Or</div>
+      <div class="signinuser" style="margin-bottom: 30px;">Sign in as <a href="../3%20User%20sign%20in/User-sign-up.html">Student.</a></div>
+      <div class="register">Dont have an account?<a href="../2%20Sign%20up/signup.html"> Register here. </a></div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="split right">
+</div>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the default form submission
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Hardcoded correct credentials
+    const correctEmail = 'test@example.com';
+    const correctPassword = 'password123';
+
+    // Validate credentials
+    if (email === correctEmail && password === correctPassword) {
+      // Redirect to categories page
+      window.location.href = 'Categories/categories.html';
+    } else {
+      alert('Invalid email or password.');
+    }
+  });
+</script>
+
+</body>
+</html>

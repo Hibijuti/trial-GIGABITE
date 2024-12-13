@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome!</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('Copy of bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    margin: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .background-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    max-width: 600px; 
+    height: auto;
+    
+  }
+
+  .text {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #FFFFFF;
+    border-radius: 30px;
+    max-width: 80%;
+  }
+
+  .proceed-button {
+    padding: 10px 80px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .proceed-button:hover {
+    background-color: #35BF3A;
+  }
+
+  .Desktop-font {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+  }
+</style>
+</head>
+<body>
+  <div class="background-blur"></div>
+  <div class="content">
+    <img src="Copy of logo.png" alt="Logo" class="logo">
+    <div class="text">
+      <p><span style="text-decoration: underline;">Welcome to GigaBite</span></p>
+      <br>Order the best meals in USC and have<br>
+      <br>them delivered to your doorstep in little<br>
+      <br>or no time. Doesn’t that sound delicious?<br>
+    </div>
+    <br><a href="../2%20Sign%20up/signuplogin.html" class="proceed-button">&#8594;</a><br>
+  </div>
+</body>
+</html>

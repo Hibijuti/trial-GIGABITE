@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign Up and Sign In</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .left {
+    left: 0;
+    background-color: #FAFBEA;
+  }
+  
+  .right {
+    right: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-image: url('pics/Copy of bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .logo {
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 250px;
+    height: 250px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .form-group input {
+    width: 500px;
+    padding: 10px 10px;
+    font-size: 16px;
+    border: 1px solid #35BF3A;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border-radius: 30px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+    text-align: left;
+  }
+  
+  .button {
+    padding: 10px 120px;
+    background-color: #35BF3A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .button:hover {
+    background-color: #000000;
+  }
+  
+  .right-side img {
+    display: none; /* Hide the image element */
+  }
+  
+  .right-side::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  
+  .belowloginform {
+    margin-top: 50px;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .belowloginform div {
+    margin-bottom: 10px;
+  }
+  
+  .signinuser {
+    font-size: 15px;
+  }
+  </style>
+</head>
+<body>
+  <div class="split left">
+    <div class="centered">
+      <img src="pics/Copy of logo (black text).png" alt="logo" class="logo">
+      <form id="signupForm" action="signup.php" method="POST">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="mname">Middle Name</label>
+          <input type="text" id="mname" name="mname" placeholder="Enter your middle name" required>
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" placeholder="Enter your last name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+          <label for="register-as">Register as</label>
+          <select id="register-as" name="register-as" style="border: 1px solid #35BF3A; padding: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.096);">
+            <option value="student">Student</option>
+            <option value="vendor">Vendor</option>
+          </select>
+        </div>
+        <button type="submit" id="register" name="register" class="button">Sign up</button>
+      </form>
+      <div class="belowloginform" id="signup-links">
+        <div>Already have an account? <a href="#" onclick="showSignIn('user')">Login here.</a></div>
+      </div>
+      <div id="admin-sign-in" style="display:none;">
+        <form id="adminLoginForm" action="signup.php" method="POST">
+          <div class="form-group">
+            <label for="admin-email">Email</label>
+            <input type="email" id="admin-email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="admin-password">Password</label>
+            <input type="password" id="admin-password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" name="login" class="button">Login as Vendor</button>
+          <input type="hidden" name="register-as" value="vendor">
+        </form>
+        <div class="belowloginform">
+          <div style="margin-top: 40px; margin-bottom: 40px; font-size: 15px;">Or</div>
+          <div class="signinuser">Login as <a href="#" onclick="showSignIn('user')">Student</a></div>
+          <div class="register">Don't have an account?<a href="#" onclick="showSignUp()"> Register here. </a></div>
+        </div>
+      </div>
+      <div id="user-sign-in" style="display:none;">
+        <form id="userLoginForm" action="signup.php" method="POST">
+          <div class="form-group">
+            <label for="user-email">Email</label>
+            <input type="email" id="user-email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="user-password">Password</label>
+            <input type="password" id="user-password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" name="login" class="button">Login as Student/Staff</button>
+          <input type="hidden" name="register-as" value="student">
+        </form>
+        <div class="belowloginform">
+          <div style="margin-top: 40px; margin-bottom: 40px; font-size: 15px;">Or</div>
+          <div class="signinuser">Login as <a href="#" onclick="showSignIn('admin')">Vendor</a></div>
+          <div class="register">Don't have an account?<a href="#" onclick="showSignUp()"> Register here. </a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="split right">
+    <div class="right-side"></div>
+  </div>
+  <script>
+    function showSignIn(userType) {
+      document.getElementById('admin-sign-in').style.display = userType === 'admin' ? 'block' : 'none';
+      document.getElementById('user-sign-in').style.display = userType === 'user' ? 'block' : 'none';
+      document.getElementById('signupForm').style.display = 'none'; // Hide the signup form
+      document.getElementById('signup-links').style.display = 'none'; // Hide the signup links
+    }
+    function showSignUp() {
+      document.getElementById('admin-sign-in').style.display = 'none';
+      document.getElementById('user-sign-in').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block'; // Ensure signup form is visible
+      document.getElementById('signup-links').style.display = 'block'; // Ensure signup links are visible
+    }
+  </script>
+</body>
